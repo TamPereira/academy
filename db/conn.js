@@ -1,4 +1,5 @@
 const { Sequelize } = require('sequelize');
+const User = require('../models/User');
 
 const sequelize = new Sequelize('academy', 'root', '04021987', {
     host: 'localhost',
@@ -11,5 +12,8 @@ try{
 }catch(err) {
     console.log('A ORM não se conectou:', err)
 }
+
+// Criar a tabela no DB
+//User.sync();
 
 module.exports = sequelize;

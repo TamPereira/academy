@@ -1,0 +1,24 @@
+<section>
+    <a href="/users/new" class="btn btn-dark">
+        <i class="bi bi-plus"></i>
+        Adicionar Professor
+    </a>
+    <hr />
+    <h1>Professores Cadastrados</h1>
+    <div class="container">
+        {{#each users}}
+        <div class="item">
+            <p>{{this.name}}</p> <!-- utiliza o this para poder chama tudo que vai o nome-->
+            <p>{{this.occupation}}</p>
+            <div class="actions">
+                <a href="/users/{{this.id}}" class="details-btn">Detalhes</a>
+                <a href="/users/edit/{{this.id}}" class="edit-btn">Editar</a>
+
+                <form action="/users/remove/{{this.id}}" method="POST">
+                    <input type="submit" value="Excluir" class="delete-btn">
+                </form>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</section>

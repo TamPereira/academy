@@ -1,18 +1,11 @@
-import User from "../models/User";
+const User = require('../models/User');
 
 class UserController {
 
-    // Verificar
-    static async paginaUser(req, res) {
-        const name = req.body.name;
-        const occupation = req.body.occupation;
-    User.create({name, occupation})
-    res.redirect('/home')
-    }
-
+   
     // Renderizar página de Add
     static async paginaAdicionarUser(req, res) {
-        res.render('adduser')
+        res.render('/adduser')
     }
 
     // Adicionar User
@@ -21,7 +14,16 @@ class UserController {
         const user = User({ name, occupation });
         await user.save();
 
-        res.redirect("/home")
+       User.create({name, occupation})
+        res.redirect("/")
+    }
+
+     // Verificar
+     static async paginaUser(req, res) {
+       const users = await User.findAll({raw: true})
+       console.log(users)
+
+       res.redirect('home', {users: users})
     }
 
     //Editar User
@@ -29,7 +31,7 @@ class UserController {
         const { id } = req.params;
         const user = await User.findById(id).lean();
 
-        res.render("/useredit", { user });
+        res.render("useredit", { user });
     }
 
     // Atualização 
@@ -38,7 +40,7 @@ class UserController {
 
         await User.findByIdAndUpdate(id, { name, occupation });
 
-        res.redirect("/");
+        res.redirect("/home");
     }
 
     static async deleteUser(req, res) {

@@ -1,9 +1,10 @@
-import { Router } from "express";
-import userRoutes from "./user.routes"
+const express = require('express');
+const router = express.Router();
+const userRoutes = require('./user.routes')
 
-const router = Router();
+router.get("/", (req, res) => res.render("home"));
 
-router.get("/", (req, res) => res.render("main"));
+
 
 router.use([userRoutes]);
 
