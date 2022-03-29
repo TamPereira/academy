@@ -2,10 +2,19 @@ const User = require('../models/User');
 
 class UserController {
 
-   
+
+     // Verificar
+     static async paginaUser(req, res) {
+        const users = await User.findAll({raw: true})
+        console.log(users)
+ 
+        res.render('home', {users: users})
+     }
+
+     
     // Renderizar página de Add
     static async paginaAdicionarUser(req, res) {
-        res.render('/adduser')
+        res.render('adduser')
     }
 
     // Adicionar User
@@ -18,14 +27,7 @@ class UserController {
         res.redirect("/")
     }
 
-     // Verificar
-     static async paginaUser(req, res) {
-       const users = await User.findAll({raw: true})
-       console.log(users)
-
-       res.redirect('home', {users: users})
-    }
-
+    
     //Editar User
     static async paginaEditUser(req, res) {
         const { id } = req.params;
