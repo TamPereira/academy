@@ -1,15 +1,16 @@
 <h1>Adicione Professor</h1>
-<div class="container-form">
+<div class="border border-info rounded-3">
   <form action="/users/create" method="POST" class="form">
-    <div class="form-control">
-      <label for="name">Nome:</label>
+    <div class="form-control" class="mb-3">
+      <label for="name" class="form-label">Nome:</label>
       <input type="text" name="name" placeholder="Nome do professor">
     </div>
-    <div class="form-control">
-      <label for="occupation">Função</label>
+    <div class="form-control" class="mb-3">
+      <label for="occupation" class="form-label">Função</label>
       <input type="text" name="occupation" placeholder="Função">
     </div>
-    <input type="submit" value="Cadastrar">
-
+    <div class="form-control">
+      <input class="btn btn-outline-success" type="submit" value="Cadastrar">
+    </div>
   </form>
 </div>

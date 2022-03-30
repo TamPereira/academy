@@ -2,8 +2,18 @@ const User = require('../models/User');
 
 class UserController {
 
+     // Verificar
+     static async paginaUser(req, res) {
+        let query = {}
+        const { nomeUser } = req.query
+        
+        if(nomeUser) {
+            query = {name: { $regex: `${nomeUser}`, $options: "i"}}
+        }
+        const users = await User.find(query).lean()
+        res.render("user", { users, nomeUser });
+     }
 
-     
      
     // Renderizar página de Add
     static async paginaAdicionarUser(req, res) {
@@ -12,21 +22,14 @@ class UserController {
 
     // Adicionar User
     static async addUser(req, res) {
-        const name = req.body.name;
-        const occupation = req.body.occupation;
-
-       User.create({name, occupation})
-        res.redirect("/")
+       const { name, occupation } = req.body
+        const user = User({name, occupation})
+        await user.save();
+        //console.log('type req.body: ' + typeof req.body)
+        res.redirect("/home")
     }
 
-    // Verificar
-    static async paginaUser(req, res) {
-        const users = await User.findAll({raw: true})
-        console.log(users)
- 
-        res.render('home', {users: users})
-     }
-
+   
     
     //Editar User
     static async paginaEditUser(req, res) {

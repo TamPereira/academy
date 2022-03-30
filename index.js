@@ -2,15 +2,16 @@ const express = require('express');
 const exprhbs = require('express-handlebars');
 //const routes = require("./routes");
 const app = express();
-require("./routes")(app)
+require("./routes/index")(app)
 
 const conn = require('./db/conn')
 
+
 app.engine('handlebars', exprhbs.engine());
 app.set('view engine', 'handlebars');
-app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(express.static('public'));
+app.use(express.json())
 //app.use(routes)
 
 
