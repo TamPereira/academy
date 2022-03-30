@@ -3,12 +3,14 @@ const db = require('../db/conn')
 
 
 const User = db.define('User', {
-    id: {
+   /* id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true
-    },
+    },*/
+    
+    
     name: {
         type: DataTypes.STRING,
         allowNull: false,

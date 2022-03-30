@@ -3,29 +3,29 @@ const User = require('../models/User');
 class UserController {
 
 
-     // Verificar
-     static async paginaUser(req, res) {
+     
+     
+    // Renderizar página de Add
+    static async paginaAdicionarUser(req, res) {
+    res.render('adduser')
+    }
+
+    // Adicionar User
+    static async addUser(req, res) {
+        const name = req.body.name;
+        const occupation = req.body.occupation;
+
+       User.create({name, occupation})
+        res.redirect("/")
+    }
+
+    // Verificar
+    static async paginaUser(req, res) {
         const users = await User.findAll({raw: true})
         console.log(users)
  
         res.render('home', {users: users})
      }
-
-     
-    // Renderizar página de Add
-    static async paginaAdicionarUser(req, res) {
-        res.render('adduser')
-    }
-
-    // Adicionar User
-    static async addUser(req, res) {
-        const { name, occupation } = req.body;
-        const user = User({ name, occupation });
-        await user.save();
-
-       User.create({name, occupation})
-        res.redirect("/")
-    }
 
     
     //Editar User
