@@ -1,0 +1,18 @@
+<h1>Editar Professor: {{ user.dataValues.name }}</h1>
+<div class="container-form">
+  <form action="/users/update" method="POST" class="form">
+    <input type="hidden" name="id" value="{{ user.dataValues.id }}">
+    <div class="form-control">
+      <label for="name">Nome: </label>
+      <input type="text" name="name" value="{{ user.dataValues.name }}">
+    </div>
+
+    <div class="form-control">
+      <label for="email">Email: </label>
+      <input type="email" name="email" value="{{ user.dataValues.email }}">
+    </div>
+
+    <input type="submit" value="Editar">
+
+  </form>
+</div>

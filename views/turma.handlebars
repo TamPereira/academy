@@ -1,0 +1,24 @@
+<section>
+    <a href="/turma/new" class="btn btn-dark">
+        <i class="bi bi-plus"></i>
+        Adicionar Turma
+    </a>
+    <hr />
+    <h1>Turmas Cadastrados</h1>
+    <div class="container">
+        {{#each turmas}}
+        <div class="item">
+            <p>{{this.dataValues.name}}</p> <!-- utiliza o this para poder chama tudo que vai o nome-->
+            
+            <div class="actions">
+                <a href="/turmas/{{this.dataValues.id}}" class="details-btn">Alunos</a>
+                <a href="/turmas/edit/{{this.dataValues.id}}" class="edit-btn">Editar</a>
+
+                <form action="/turmas/remove/{{this.dataValues.id}}" method="POST">
+                    <input type="submit" value="Excluir" class="delete-btn">
+                </form>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</section>

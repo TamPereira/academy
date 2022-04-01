@@ -14,10 +14,11 @@ class UserController {
      }
 
      
-    // Renderizar página de Add
-    static async paginaAdicionarUser(req, res) {
+    // Renderizar página de Add Professor
+    static async paginaAdicionarProfessor(req, res) {
     res.render('adduser')
     }
+
 
     // Adicionar Professor
     static async addProfessor(req, res) {
@@ -31,6 +32,24 @@ class UserController {
         res.redirect("/")
     }
 
+
+    // Aluno
+    static async paginaAluno(req, res) {
+        let users = await User.findAll({
+         where: {
+             type: 2
+         }
+        })
+ 
+        res.render('user', {users})
+      }
+ 
+      
+     // Renderizar página de Add Aluno
+     static async paginaAdicionarAluno(req, res) {
+     res.render('addaluno')
+     }
+
     // Adicionar Aluno
     static async addAluno(req, res) {
         let user = new User({
@@ -41,33 +60,42 @@ class UserController {
         });
         await user.save();
        
-        res.redirect("/")
+        res.redirect("/aluno")
     }
+
+
 
     
     //Editar User
     static async paginaEditUser(req, res) {
-        const { id } = req.params;
-        const user = await User.findById(id).lean();
+        const id = req.params.id
+        const user = await User.findOne({where: {id:id}})
 
-        res.render("useredit", { user });
+        res.render('edituser', { user: user});
     }
 
     // Atualização 
     static async editUser(req, res) {
-        const { id, name, occupation } = req.body;
+        const id = req.body.id;
+        const name = req.body.name;
+        const email = req.body.email
 
-        await User.findByIdAndUpdate(id, { name, occupation });
+        const userData = {
+            id,
+            name,
+            email,
+        }
+        console.log(userData)
+        User.update(userData, {where: {id}})
 
+    
         res.redirect("/");
     }
 
     static async deleteUser(req, res) {
         const id = req.params.id
         await User.destroy({where: { id }})
-      // const { id } = req.body;
-       //await User.findByIdAndDelete(id);
-
+     
         res.redirect("/");
     }
 

@@ -1,0 +1,13 @@
+<h1>Editar Turma: {{ turma.dataValues.name }}</h1>
+<div class="container-form">
+  <form action="turmas/update" method="POST" class="form">
+    <input type="hidden" name="id" value="{{ turma.dataValues.id }}">
+    <div class="form-control">
+      <label for="name">Nome: </label>
+      <input type="text" name="name" value="{{ turma.dataValues.name }}">
+    </div>
+
+    <input type="submit" value="Editar">
+
+  </form>
+</div>

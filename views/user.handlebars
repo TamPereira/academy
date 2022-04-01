@@ -11,10 +11,11 @@
             <p>{{this.dataValues.name}}</p> <!-- utiliza o this para poder chama tudo que vai o nome-->
             <p>{{this.dataValues.email}}</p>
             <div class="actions">
-                <a href="/users/{{this.dataValues.id}}" class="details-btn">Turmas</a>
+                <a href="/turmas/" class="details-btn">Turmas</a>
+                
                 <a href="/users/edit/{{this.dataValues.id}}" class="edit-btn">Editar</a>
 
-                <form action="/users/remove{{this.dataValues.id}}" method="POST">
+                <form action="/users/remove/{{this.dataValues.id}}" method="POST">
                     <input type="submit" value="Excluir" class="delete-btn">
                 </form>
             </div>
