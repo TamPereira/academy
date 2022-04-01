@@ -3,27 +3,31 @@ const db = require('../db/conn')
 
 
 const User = db.define('User', {
-   /* id: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
-        allowNull: false,
-        primaryKey: true
-    },*/
-    
+
     
     name: {
         type: DataTypes.STRING,
         allowNull: false,
     },
 
-    occupation: {
+    email: {
         type: DataTypes.STRING,
-        require: true
-    }
+        
+    },
+
+    type: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
+
+    turma_id: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+    },
 })
 
 // Criar a tabela no DB //verificar
-    User.sync();
+   // User.sync();
 
 //Primeiro apaga a TB, em seguida cria TB
     //User.sync({ force: true })

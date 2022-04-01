@@ -1,5 +1,4 @@
 const { Sequelize } = require('sequelize');
-const User = require('../models/User');
 
 const sequelize = new Sequelize('academy', 'root', '04021987', {
     host: 'localhost',
@@ -15,5 +14,5 @@ try{
 
 // Criar a tabela no DB
 //User.sync();
-
+//.sync({force:true})
 module.exports = sequelize;

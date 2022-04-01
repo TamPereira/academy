@@ -2,16 +2,15 @@ const User = require('../models/User');
 
 class UserController {
 
-     // Verificar
-     static async paginaUser(req, res) {
-        let query = {}
-        const { nomeUser } = req.query
-        
-        if(nomeUser) {
-            query = {name: { $regex: `${nomeUser}`, $options: "i"}}
+     // Professor
+     static async paginaProfessor(req, res) {
+       let users = await User.findAll({
+        where: {
+            type: 1
         }
-        const users = await User.find(query).lean()
-        res.render("user", { users, nomeUser });
+       })
+
+       res.render('user', {users})
      }
 
      
@@ -20,16 +19,31 @@ class UserController {
     res.render('adduser')
     }
 
-    // Adicionar User
-    static async addUser(req, res) {
-       const { name, occupation } = req.body
-        const user = User({name, occupation})
+    // Adicionar Professor
+    static async addProfessor(req, res) {
+        let user = new User({
+            name: req.body.name,
+            email: req.body.email,
+            type: 1
+        });
         await user.save();
-        //console.log('type req.body: ' + typeof req.body)
-        res.redirect("/home")
+       
+        res.redirect("/")
     }
 
-   
+    // Adicionar Aluno
+    static async addAluno(req, res) {
+        let user = new User({
+            name: req.body.name,
+            email: req.body.email,
+            type: 2,
+            turma_id: req.params.turma_id
+        });
+        await user.save();
+       
+        res.redirect("/")
+    }
+
     
     //Editar User
     static async paginaEditUser(req, res) {
@@ -45,12 +59,14 @@ class UserController {
 
         await User.findByIdAndUpdate(id, { name, occupation });
 
-        res.redirect("/home");
+        res.redirect("/");
     }
 
     static async deleteUser(req, res) {
         const id = req.params.id
-        await User.destroy({where: { id:id }})
+        await User.destroy({where: { id }})
+      // const { id } = req.body;
+       //await User.findByIdAndDelete(id);
 
         res.redirect("/");
     }
