@@ -1,13 +1,13 @@
 <section>
     <a href="/professor/new" class="btn btn-dark">
         <i class="bi bi-plus"></i>
-        Adicionar Professor
+       + Adicionar Professor
     </a>
     <hr />
     <h1>Professores Cadastrados</h1>
     <div class="container">
         {{#each users}}
-        <div class="item">
+        <div class="item border-start">
             <p>{{this.dataValues.name}}</p> <!-- utiliza o this para poder chama tudo que vai o nome-->
             <p>{{this.dataValues.email}}</p>
             <div class="actions">
