@@ -19,8 +19,8 @@ class TurmaController{
      // Adicionar Turma
      static async addTurma(req, res) {
          let turma = new Turma({
+             UserId: req.body.UserId,
              name: req.body.name,
-            
          });
          await turma.save();
         

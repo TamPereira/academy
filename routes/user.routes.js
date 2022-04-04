@@ -6,7 +6,18 @@ module.exports = function (app) {
     app.post("/professor/create", UserController.addProfessor);
     app.get("/users/edit/:id", UserController.paginaEditUser)
     app.post("/users/update", UserController.editUser)
-    app.post("/users/remove", UserController.deleteUser)
+    app.post("/users/remove/:id", UserController.deleteUser)
+
+
+    // Aluno
+    app.get("/", UserController.paginaAluno);
+    app.get("/aluno/new", UserController.paginaAdicionarAluno);
+    app.post("/aluno/create", UserController.addAluno);
+    
 }
 
+/** Rotas Aluno */
+    // Cadastrar aluno
+
+    // app.post('/team/:team_id/aluno/create', UserController.addAluno)
 

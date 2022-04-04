@@ -93,10 +93,11 @@ class UserController {
     }
 
     static async deleteUser(req, res) {
-        const id = req.params.id
-        await User.destroy({where: { id }})
+       const id = req.params.id
+       await User.destroy({where: {id}})
      
-        res.redirect("/");
+       res.redirect("/");
+
     }
 
 
