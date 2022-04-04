@@ -6,6 +6,6 @@ module.exports = function (app) {
     app.post("/turma/create", TurmaController.addTurma);
     app.get("/turmas/edit/:id", TurmaController.paginaEditTurma);
     app.post("turmas/update", TurmaController.editTurma);
-    app.post("turmas/remove", TurmaController.deleteTurma);
+    app.post("turmas/remove/:id", TurmaController.deleteTurma);
     
 }

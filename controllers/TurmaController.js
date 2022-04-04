@@ -29,7 +29,6 @@ class TurmaController{
  
  
      
-     
      //Editar Turma
      static async paginaEditTurma(req, res) {
          const id = req.params.id

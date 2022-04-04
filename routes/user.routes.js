@@ -13,7 +13,9 @@ module.exports = function (app) {
     app.get("/", UserController.paginaAluno);
     app.get("/aluno/new", UserController.paginaAdicionarAluno);
     app.post("/aluno/create", UserController.addAluno);
-    
+    app.get("/users/edit/:id", UserController.paginaEditUser);
+    app.post("/users/update", UserController.editUser)
+    app.post("/users/remove/:id", UserController.deleteUser)
 }
 
 /** Rotas Aluno */
