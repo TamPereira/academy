@@ -1,0 +1,46 @@
+<section>
+<a href="/aluno/new" class="btn btn-dark">
+        <i class="bi bi-plus"></i>
+        + Adicionar Aluno
+    </a>
+    <hr />
+
+    <div>
+    <table class="table table-striped">
+      <thead>
+        <th>Nome</th>
+        <th>Media</th>
+        <th>Status</th>
+        <th>Ações</th>
+      </thead>
+      <tbody>
+        {{#each alunos}}
+          <tr>
+            <td>{{this.dataValues.name}}</td>
+            <td>{{this.ddataValues.media}}</td>
+            <td>{{this.ddataValues.status}}</td>
+            <td>
+              <div>
+                <div>
+                  <a href="/users/edit/{{this._id}}" class="btn btn-sm btn-warning">
+                    <i class="bi bi-pencil"></i>
+                  </a>
+                </div>
+                <div>
+                  <form action="/users/remove/" method="POST">
+                    <input name="id" type="hidden"/>
+                    <button class="btn btn-sm btn-danger">
+                      <i class="bi bi-trash"></i>
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+
+
+</section>
