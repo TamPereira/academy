@@ -5,10 +5,10 @@ const sequelize = new Sequelize('academy', 'root', '04021987', {
     dialect: 'mysql'
 });
 
-try{
+try {
     sequelize.authenticate()
     console.log('Banco de dados conectado via ORM Sequelize.')
-}catch(err) {
+} catch (err) {
     console.log('A ORM não se conectou:', err)
 }
 

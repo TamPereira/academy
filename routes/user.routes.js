@@ -16,6 +16,9 @@ module.exports = function (app) {
     app.get("/users/edit/:id", UserController.paginaEditUser);
     app.post("/users/update", UserController.editUser)
     app.post("/users/remove/:id", UserController.deleteUser)
+
+
+
 }
 
 

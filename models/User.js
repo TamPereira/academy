@@ -4,7 +4,7 @@ const db = require('../db/conn')
 
 const User = db.define('User', {
 
-    
+
     name: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -12,7 +12,7 @@ const User = db.define('User', {
 
     email: {
         type: DataTypes.STRING,
-        
+
     },
 
     type: {
@@ -27,9 +27,9 @@ const User = db.define('User', {
 })
 
 // Criar a tabela no DB //verificar
-   // User.sync();
+// User.sync();
 
 //Primeiro apaga a TB, em seguida cria TB
-    //User.sync({ force: true })
+//User.sync({ force: true })
 
 module.exports = User

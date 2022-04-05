@@ -7,5 +7,5 @@ module.exports = function (app) {
     app.get("/turmas/edit/:id", TurmaController.paginaEditTurma);
     app.post("turmas/update", TurmaController.editTurma);
     app.post("turmas/remove/:id", TurmaController.deleteTurma);
-    
+
 }

@@ -4,7 +4,7 @@ const db = require('../db/conn')
 
 const Turma = db.define('Turma', {
 
-    
+
     name: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -17,9 +17,9 @@ const Turma = db.define('Turma', {
 })
 
 // Criar a tabela no DB //verificar
-   // User.sync();
+// User.sync();
 
 //Primeiro apaga a TB, em seguida cria TB
-    //User.sync({ force: true })
+//User.sync({ force: true })
 
 module.exports = User

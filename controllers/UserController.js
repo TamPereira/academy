@@ -2,21 +2,21 @@ const User = require('../models/User');
 
 class UserController {
 
-     // Professor
-     static async paginaProfessor(req, res) {
-       let users = await User.findAll({
-        where: {
-            type: 1
-        }
-       })
+    // Professor
+    static async paginaProfessor(req, res) {
+        let users = await User.findAll({
+            where: {
+                type: 1
+            }
+        })
 
-       res.render('user', {users})
-     }
+        res.render('user', { users })
+    }
 
-     
+
     // Renderizar página de Add Professor
     static async paginaAdicionarProfessor(req, res) {
-    res.render('adduser')
+        res.render('adduser')
     }
 
 
@@ -28,7 +28,7 @@ class UserController {
             type: 1
         });
         await user.save();
-       
+
         res.redirect("/")
     }
 
@@ -36,19 +36,19 @@ class UserController {
     // Aluno
     static async paginaAluno(req, res) {
         let alunos = await User.findAll({
-         where: {
-             type: 2
-         }
+            where: {
+                type: 2
+            }
         })
- 
-        res.render('aluno', {alunos})
-      }
- 
-      
-     // Renderizar página de Add Aluno
-     static async paginaAdicionarAluno(req, res) {
-     res.render('addaluno')
-     }
+
+        res.render('aluno', { alunos })
+    }
+
+
+    // Renderizar página de Add Aluno
+    static async paginaAdicionarAluno(req, res) {
+        res.render('addaluno')
+    }
 
     // Adicionar Aluno
     static async addAluno(req, res) {
@@ -59,19 +59,19 @@ class UserController {
             turma_id: req.params.turma_id
         });
         await aluno.save();
-       
+
         res.redirect("/")
     }
 
 
 
-    
+
     //Editar User
     static async paginaEditUser(req, res) {
         const id = req.params.id
-        const user = await User.findOne({where: {id:id}})
+        const user = await User.findOne({ where: { id: id } })
 
-        res.render('edituser', { user: user});
+        res.render('edituser', { user: user });
     }
 
     // Atualização 
@@ -86,17 +86,17 @@ class UserController {
             email,
         }
         console.log(userData)
-        User.update(userData, {where: {id}})
+        User.update(userData, { where: { id } })
 
-    
+
         res.redirect("/");
     }
 
     static async deleteUser(req, res) {
-       const id = req.params.id
-       await User.destroy({where: {id}})
-     
-       res.redirect("/");
+        const id = req.params.id
+        await User.destroy({ where: { id } })
+
+        res.redirect("/");
 
     }
 
