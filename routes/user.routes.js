@@ -10,7 +10,7 @@ module.exports = function (app) {
 
 
     // Aluno
-    app.get("/", UserController.paginaAluno);
+    app.get("/aluno", UserController.paginaAluno);
     app.get("/aluno/new", UserController.paginaAdicionarAluno);
     app.post("/aluno/create", UserController.addAluno);
     app.get("/users/edit/:id", UserController.paginaEditUser);
@@ -18,8 +18,6 @@ module.exports = function (app) {
     app.post("/users/remove/:id", UserController.deleteUser)
 }
 
-/** Rotas Aluno */
-    // Cadastrar aluno
 
     // app.post('/team/:team_id/aluno/create', UserController.addAluno)
 

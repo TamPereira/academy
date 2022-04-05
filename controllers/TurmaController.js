@@ -4,8 +4,7 @@ class TurmaController{
 
     // Turma
     static async paginaTurma(req, res) {
-        let turmas = await Turma.findAll()
- 
+        let turmas = await Turma.findAll({raw: true})
         res.render('turma', {turmas})
       }
  

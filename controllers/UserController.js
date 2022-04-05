@@ -35,13 +35,13 @@ class UserController {
 
     // Aluno
     static async paginaAluno(req, res) {
-        let users = await User.findAll({
+        let alunos = await User.findAll({
          where: {
              type: 2
          }
         })
  
-        res.render('user', {users})
+        res.render('aluno', {alunos})
       }
  
       
@@ -52,15 +52,15 @@ class UserController {
 
     // Adicionar Aluno
     static async addAluno(req, res) {
-        let user = new User({
+        let aluno = new User({
             name: req.body.name,
             email: req.body.email,
             type: 2,
             turma_id: req.params.turma_id
         });
-        await user.save();
+        await aluno.save();
        
-        res.redirect("/aluno")
+        res.redirect("/")
     }
 
 
