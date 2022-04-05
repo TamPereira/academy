@@ -1,11 +1,11 @@
-<h1>Editar Turma: {{ turma.dataValues.name }}</h1>
-<div class="container-form">
+<div class="cadastro-box">
+  <h2>Atualizar Turma: {{ turma.dataValues.name }}</h2>
   <form action="turmas/update" method="POST" class="form">
     <input type="hidden" name="id" value="{{ turma.dataValues.id }}">
-    <div class="form-control">
+    <div class="user-box">
       <label for="name">Nome: </label>
       <input type="text" name="name" value="{{ turma.dataValues.name }}">
     </div>
-    <input type="submit" value="Editar">
+    <input class="btn btn-outline-primary" type="submit" value="Atualizar">
   </form>
 </div>

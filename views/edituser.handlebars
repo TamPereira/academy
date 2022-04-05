@@ -1,15 +1,16 @@
-<h1>Editar Usuário: {{ user.dataValues.name }}</h1>
-<div class="container-form">
+
+<div class="cadastro-box">
+  <h2>Atualizar: {{ user.dataValues.name }}</h2>
   <form action="/users/update" method="POST" class="form">
     <input type="hidden" name="id" value="{{ user.dataValues.id }}">
-    <div class="form-control">
+    <div class="user-box">
       <label for="name">Nome: </label>
       <input type="text" name="name" value="{{ user.dataValues.name }}">
     </div>
-    <div class="form-control">
+    <div class="user-box">
       <label for="email">Email: </label>
       <input type="email" name="email" value="{{ user.dataValues.email }}">
     </div>
-    <input type="submit" value="Editar">
+    <input class="btn btn-outline-primary" type="submit" value="Atualizar">
   </form>
 </div>

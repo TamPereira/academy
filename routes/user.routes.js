@@ -10,7 +10,7 @@ module.exports = function (app) {
 
 
     // Aluno
-    app.get("/aluno", UserController.paginaAluno);
+    app.get("/alunos", UserController.paginaAluno);
     app.get("/aluno/new", UserController.paginaAdicionarAluno);
     app.post("/aluno/create", UserController.addAluno);
     app.get("/users/edit/:id", UserController.paginaEditUser);
