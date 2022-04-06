@@ -4,10 +4,14 @@ const db = require('../db/conn')
 
 const Turma = db.define('Turma', {
 
-
     name: {
         type: DataTypes.STRING,
         allowNull: false,
+    },
+
+    professor_id: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
     },
 
     aluno_id: {

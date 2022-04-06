@@ -13,12 +13,10 @@ class UserController {
         res.render('user', { users })
     }
 
-
     // Renderizar página de Add Professor
     static async paginaAdicionarProfessor(req, res) {
         res.render('adduser')
     }
-
 
     // Adicionar Professor
     static async addProfessor(req, res) {
@@ -62,9 +60,6 @@ class UserController {
 
         res.redirect("/")
     }
-
-
-
 
     //Editar User
     static async paginaEditUser(req, res) {
