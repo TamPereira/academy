@@ -11,7 +11,7 @@ class TurmaController {
              }
          })
          let professor = await User.findByPk(req.params.professor_id)
-         console.log(professor)
+        // console.log(professor)
         res.render('turma', { turmas, professor })
     }
 
@@ -19,15 +19,16 @@ class TurmaController {
     // Renderizar página de Add Turma
     static async paginaAdicionarTurma(req, res) {
         res.render('addturma', {
-            professor_id: req.params.professor_id
+            professor_id: req.params.professor_id,
+            
         })
-        console.log(req.params.professor_id)
+       
     }
 
     // Adicionar Turma
     static async addTurma(req, res) {
         let turma = new Turma({
-            User: req.body.professor_id, // conferir
+            professor_id: req.params.professor_id,
             name: req.body.name,
         });
         await turma.save();
@@ -47,6 +48,7 @@ class TurmaController {
 
     // Atualização 
     static async editTurma(req, res) {
+       // const professor_id = req.body.professor_id;
         const id = req.body.id;
         const name = req.body.name;
 
@@ -54,18 +56,20 @@ class TurmaController {
         const userData = {
             id,
             name,
+           // professor_id
 
         }
         console.log(userData)
-        User.update(userData, { where: { id } })
+        Turma.update(userData, { where: { id } })
 
 
         res.redirect("/");
     }
 
     static async deleteTurma(req, res) {
+        //const professor_id = req.body.professor_id
         const id = req.params.id
-        await User.destroy({ where: { id } })
+        await Turma.destroy({ where: { id } })
 
         res.redirect("/");
     }

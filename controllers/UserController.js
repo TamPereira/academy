@@ -1,3 +1,4 @@
+const Turma = require('../models/Turma');
 const User = require('../models/User');
 
 
@@ -11,14 +12,13 @@ class UserController {
             
             }
         })
-
         res.render('user', { users })
     }
 
     // Renderizar página de Add Professor
     static async paginaAdicionarProfessor(req, res) {
         res.render('adduser', {
-            professor_id: req.params.professor_id
+            professor_id: req.params.professor_id,
         })
     }
 
@@ -39,26 +39,31 @@ class UserController {
     static async paginaAluno(req, res) {
         let alunos = await User.findAll({
             where: {
-                type: 2
+                type: 2,
+                turma_id: req.params.turma_id
             }
         })
+        let turma = await Turma.findByPk(req.params.turma_id)
 
-        res.render('aluno', { alunos })
+        res.render('aluno', { alunos, turma })
     }
 
 
     // Renderizar página de Add Aluno
     static async paginaAdicionarAluno(req, res) {
-        res.render('addaluno')
+        res.render('addaluno', {
+            turma_id: req.params.turma_id
+        })
     }
 
     // Adicionar Aluno
     static async addAluno(req, res) {
         let aluno = new User({
+            turma_id: req.params.turma_id,
             name: req.body.name,
             email: req.body.email,
             type: 2,
-            turma_id: req.params.turma_id
+            
         });
         await aluno.save();
 
@@ -91,6 +96,7 @@ class UserController {
         res.redirect("/");
     }
 
+    // Excluir usuario
     static async deleteUser(req, res) {
         const id = req.params.id
         await User.destroy({ where: { id } })

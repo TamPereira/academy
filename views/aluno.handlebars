@@ -1,5 +1,5 @@
 <section>
-  <a href="/aluno/new" class="btn btn-secondary">
+  <a href="/turma/{{turma.dataValues.id}}/aluno/create" class="btn btn-secondary">
     <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-person-plus"
       viewBox="0 0 16 16">
       <path
@@ -12,6 +12,7 @@
   <hr />
 
   <div>
+    <h2>Alunos Turma: {{turma.dataValues.name}}</h2>
     <table class="table table-striped">
       <thead>
         <th>Nome</th>

@@ -14,7 +14,8 @@
         <div class="item">
             <h4>{{this.dataValues.name}}</h4> <!-- utiliza o this para poder chama tudo que vai o nome-->
             <div class="actions">
-                <a href="/turmas/{{this.dataValues.id}}" class="details-btn">Alunos</a>
+                <a href="/turma/{{this.dataValues.id}}/alunos" class="details-btn">Alunos</a>
+
                 <a href="/turmas/edit/{{this.dataValues.id}}" class="edit-btn">Editar</a>
 
                 <form action="/turmas/remove/{{this.dataValues.id}}" method="POST">

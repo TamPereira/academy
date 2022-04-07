@@ -14,17 +14,14 @@ const Turma = db.define('Turma', {
         allowNull: true,
     },
 
-    aluno_id: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
-    },
+
 })
 
 // Criar a tabela no DB //verificar
- Turma.sync();
+ //Turma.sync();
 
 //Primeiro apaga a TB, em seguida cria TB
-//User.sync({ force: true })
+//Turma.sync({ force: true })
 
 
 module.exports = Turma
