@@ -1,5 +1,5 @@
 <section>
-    <a href="/turma/new" class="btn btn-secondary">
+    <a href="/professor/{{professor.dataValues.id}}/turmas/create" class="btn btn-secondary">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
             class="bi bi-plus-square-fill" viewBox="0 0 16 16">
             <path
@@ -8,7 +8,7 @@
         Adicionar Turma
     </a>
     <hr />
-    <h1>Turmas Cadastrados Professor {{this.dataValues.name}}</h1>
+    <h1>Turmas Cadastrados Professor {{professor.dataValues.name}}</h1>
     <div class="container">
         {{#each turmas}}
         <div class="item">

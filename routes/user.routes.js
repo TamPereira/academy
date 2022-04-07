@@ -5,8 +5,8 @@ module.exports = function (app) {
     app.get("/professor/new", UserController.paginaAdicionarProfessor);
     app.post("/professor/create", UserController.addProfessor);
     app.get("/users/edit/:id", UserController.paginaEditUser)
-    app.post("/users/update", UserController.editUser)
-    app.post("/users/remove/:id", UserController.deleteUser)
+    app.put("/users/update", UserController.editUser)
+    app.delete("/users/remove/:id", UserController.deleteUser)
 
 
     // Aluno
@@ -14,8 +14,8 @@ module.exports = function (app) {
     app.get("/aluno/new", UserController.paginaAdicionarAluno);
     app.post("/aluno/create", UserController.addAluno);
     app.get("/users/edit/:id", UserController.paginaEditUser);
-    app.post("/users/update", UserController.editUser)
-    app.post("/users/remove/:id", UserController.deleteUser)
+    app.put("/users/update", UserController.editUser)
+    app.delete("/users/remove/:id", UserController.deleteUser)
 
 
 

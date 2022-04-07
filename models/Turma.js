@@ -21,9 +21,10 @@ const Turma = db.define('Turma', {
 })
 
 // Criar a tabela no DB //verificar
-// User.sync();
+ Turma.sync();
 
 //Primeiro apaga a TB, em seguida cria TB
 //User.sync({ force: true })
 
-module.exports = User
+
+module.exports = Turma

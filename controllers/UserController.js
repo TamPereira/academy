@@ -1,12 +1,14 @@
 const User = require('../models/User');
 
+
 class UserController {
 
     // Professor
     static async paginaProfessor(req, res) {
         let users = await User.findAll({
             where: {
-                type: 1
+                type: 1,
+            
             }
         })
 
@@ -15,7 +17,9 @@ class UserController {
 
     // Renderizar página de Add Professor
     static async paginaAdicionarProfessor(req, res) {
-        res.render('adduser')
+        res.render('adduser', {
+            professor_id: req.params.professor_id
+        })
     }
 
     // Adicionar Professor

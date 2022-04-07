@@ -1,28 +1,33 @@
 const Turma = require('../models/Turma')
+const User = require('../models/User')
 
 class TurmaController {
 
     // Turma
     static async paginaTurma(req, res) {
-        let turmas = await Turma.findAll({ 
+          let turmas = await Turma.findAll({ 
             where: {
-                professor_id: req.query.professor_id0
-            }
-        })
-        res.render('turma', { turmas })
+                 professor_id: req.params.professor_id
+             }
+         })
+         let professor = await User.findByPk(req.params.professor_id)
+         console.log(professor)
+        res.render('turma', { turmas, professor })
     }
 
 
     // Renderizar página de Add Turma
     static async paginaAdicionarTurma(req, res) {
-        res.render('addturma')
+        res.render('addturma', {
+            professor_id: req.params.professor_id
+        })
+        console.log(req.params.professor_id)
     }
-
 
     // Adicionar Turma
     static async addTurma(req, res) {
         let turma = new Turma({
-            // UserId: req.body.UserId,
+            User: req.body.professor_id, // conferir
             name: req.body.name,
         });
         await turma.save();
