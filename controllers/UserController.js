@@ -19,6 +19,7 @@ class UserController {
     static async paginaAdicionarProfessor(req, res) {
         res.render('adduser', {
             professor_id: req.params.professor_id,
+            referer: req.get('referer')
         })
     }
 
@@ -31,7 +32,7 @@ class UserController {
         });
         await user.save();
 
-        res.redirect("/")
+        res.redirect("req.body.referer")
     }
 
 
@@ -52,7 +53,8 @@ class UserController {
     // Renderizar página de Add Aluno
     static async paginaAdicionarAluno(req, res) {
         res.render('addaluno', {
-            turma_id: req.params.turma_id
+            turma_id: req.params.turma_id,
+            referer: req.get('referer')
         })
     }
 
@@ -67,7 +69,7 @@ class UserController {
         });
         await aluno.save();
 
-        res.redirect("/")
+        res.redirect(req.body.referer)
     }
 
     //Editar User
@@ -75,7 +77,10 @@ class UserController {
         const id = req.params.id
         const user = await User.findOne({ where: { id: id } })
 
-        res.render('edituser', { user: user });
+        res.render('edituser', { user: user,
+            referer: req.get('referer')
+        });
+        
     }
 
     // Atualização 
@@ -92,8 +97,7 @@ class UserController {
         console.log(userData)
         User.update(userData, { where: { id } })
 
-
-        res.redirect("/");
+        res.redirect(req.body.referer);
     }
 
     // Excluir usuario

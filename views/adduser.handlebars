@@ -1,6 +1,7 @@
 <div class="cadastro-box">
   <h2>Adicione Professor</h2>
   <form action="/professor/create" method="POST" class="form">
+    <input type="hidden" name="redirect" value="{{ referer }}">
     <div class="user-box">
       <label for="name">Nome:</label>
       <input type="text" name="name" placeholder="Nome do professor">
