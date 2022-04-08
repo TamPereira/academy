@@ -32,7 +32,7 @@ class UserController {
         });
         await user.save();
 
-        res.redirect("req.body.referer")
+        res.redirect(req.body.referer)
     }
 
 
@@ -96,7 +96,6 @@ class UserController {
         }
         console.log(userData)
         User.update(userData, { where: { id } })
-
         res.redirect(req.body.referer);
     }
 
@@ -105,7 +104,7 @@ class UserController {
         const id = req.params.id
         await User.destroy({ where: { id } })
 
-        res.redirect("/");
+        res.redirect(req.get('referer'));
 
     }
 

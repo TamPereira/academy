@@ -1,6 +1,7 @@
 <div class="cadastro-box">
   <h1>Adicione Turma</h1>
   <form action="/professor/{{professor_id}}/turmas/create" method="POST" class="form">
+  <input type="hidden" name="referer" value="{{ referer }}">
     <div class="user-box">
       <label for="name">Nome:</label>
       <input type="text" name="name" placeholder="Nome da turma">

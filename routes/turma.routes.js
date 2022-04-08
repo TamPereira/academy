@@ -1,6 +1,5 @@
 const TurmaController = require('./../controllers/TurmaController')
 
-
 module.exports = (app) => {
     app.get("/professor/:professor_id/turmas", TurmaController.paginaTurma);
     app.get('/professor/:professor_id/turmas/create', TurmaController.paginaAdicionarTurma)
