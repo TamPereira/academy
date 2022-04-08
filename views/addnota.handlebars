@@ -1,0 +1,12 @@
+<div class="cadastro-box">
+  <h1>Adicione Nota</h1>
+  <form action="/aluno/{{aluno_id}}/notas/create" method="POST" class="form">
+  <input type="hidden" name="referer" value="{{ referer }}">
+    <div class="user-box">
+      <label for="avaliacao">Nota:</label>
+      <input type="number" name="avaliacao" placeholder="Nota">
+    </div>
+      <input class="btn btn-outline-primary" type="submit" value="Cadastrar">
+    </div>
+  </form>
+  </div>

@@ -1,37 +1,40 @@
-<section>
-  <a href="/turma/{{turma.dataValues.id}}/aluno/create" class="btn btn-secondary">
-    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-person-plus"
-      viewBox="0 0 16 16">
-      <path
-        d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
-      <path fill-rule="evenodd"
-        d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
-    </svg>
-    Adicionar Aluno
-  </a>
-  <hr />
+<div class="cadastro-box">
+  <h2>Atualizar: {{ aluno.dataValues.name }}</h2>
+  <form action="/alunos/update" method="POST" class="form">
+    <input type="hidden" name="id" value="{{ aluno.dataValues.id }}">
+    <input type="hidden" name="referer" value="{{ referer }}">
+    <div class="user-box">
+      <label for="name">Nome: </label>
+      <input type="text" name="name" value="{{ aluno.dataValues.name }}">
+    </div>
+    <div class="user-box">
+      <label for="email">Email:</label>
+      <input type="email" name="email" value="{{ aluno.dataValues.email }}">
+    </div>
+    <input class="btn btn-outline-primary" type="submit" value="Atualizar">
+  </form>
 
-  <div>
-    <h2>Alunos Turma: {{turma.dataValues.name}}</h2>
-    <table class="table table-striped">
+<hr>
+  <a href="/aluno/{{aluno.dataValues.id}}/notas/create" class="btn btn-secondary">
+    Adicionar Nota
+  </a>
+
+
+  <hr>
+  <h4>Notas Aluno  {{ aluno.dataValues.name }}</h4>
+
+  <table class="table table-striped">
       <thead>
-        <th>Id</th>
-        <th>Nome</th>
-        <th>Media</th>
-        <th>Status</th>
+        <th>Nota</th>
         <th>Ações</th>
       </thead>
       <tbody>
-        {{#each alunos}}
+        {{#each notas}}
         <tr>
-          <td>{{this.dataValues.id}}</td>
-          <td>{{this.dataValues.name}}</td>
-          <td>{{this.ddataValues.media}}</td>
-          <td>{{this.ddataValues.status}}</td>
-          <td>
+          <td>{{this.dataValues.avaliacao}}</td>
             <div>
               <div>
-                <a href="/alunos/edit/{{this.dataValues.id}}" class="btn btn-sm btn-warning">
+                <a href="/notas/edit/{{this.dataValues.id}}" class="btn btn-sm btn-warning">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-pencil" viewBox="0 0 16 16">
                             <path
@@ -40,7 +43,7 @@
                 </a>
               </div>
               <div>
-                <form action="/users/remove/{{this.dataValues.id}}" method="POST">
+                <form action="/notas/remove/{{this.dataValues.id}}" method="POST">
                   <input name="id" type="hidden"/>
                   <button class="btn btn-sm btn-danger">
                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -59,6 +62,4 @@
         {{/each}}
       </tbody>
     </table>
-  </div>
-
-</section>
+</div>

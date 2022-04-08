@@ -1,0 +1,12 @@
+<div class="cadastro-box">
+  <h2>Atualizar Notas: {{ nota.dataValues.avaliacao }}</h2>
+  <form action="/turmas/update" method="POST" class="form">
+    <input type="hidden" name="referer" value="{{ referer }}">
+    <input type="hidden" name="id" value="{{ nota.dataValues.id }}">
+    <div class="user-box">
+      <label for="avaliacao">Nota: </label>
+      <input type="number" name="nota1" value="{{ nota.dataValues.avaliacao }}">
+    </div>
+    <input class="btn btn-outline-primary" type="submit" value="Atualizar">
+  </form>
+</div>

@@ -35,6 +35,32 @@ class UserController {
         res.redirect(req.body.referer)
     }
 
+     //Editar User Professor
+     static async paginaEditUser(req, res) {
+        const id = req.params.id
+        const user = await User.findOne({ where: { id: id } })
+
+        res.render('edituser', { user: user,
+            referer: req.get('referer')
+        });
+        
+    }
+
+    // Atualização  User professor
+    static async editUser(req, res) {
+        const id = req.body.id;
+        const name = req.body.name;
+        const email = req.body.email
+
+        const userData = {
+            id,
+            name,
+            email,
+        }
+        console.log(userData)
+        User.update(userData, { where: { id } })
+        res.redirect(req.body.referer);
+    }
 
     // Aluno
     static async paginaAluno(req, res) {
@@ -72,19 +98,19 @@ class UserController {
         res.redirect(req.body.referer)
     }
 
-    //Editar User
-    static async paginaEditUser(req, res) {
+    //Editar User Aluno
+    static async paginaEditAluno(req, res) {
         const id = req.params.id
-        const user = await User.findOne({ where: { id: id } })
+        const aluno = await User.findOne({ where: { id: id } })
 
-        res.render('edituser', { user: user,
+        res.render('editaluno', { aluno: aluno,
             referer: req.get('referer')
         });
         
     }
 
-    // Atualização 
-    static async editUser(req, res) {
+    // Atualização  Aluno
+    static async editAluno(req, res) {
         const id = req.body.id;
         const name = req.body.name;
         const email = req.body.email

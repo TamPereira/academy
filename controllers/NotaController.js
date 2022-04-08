@@ -11,8 +11,8 @@ class NotaController {
                  
              }
          })
-         let nota = await User.findByPk(req.params.aluno_id)
-        res.render('nota', { notas, nota })
+         let aluno = await User.findByPk(req.params.aluno_id)
+        res.render('nota', { notas, aluno })
     }
 
 

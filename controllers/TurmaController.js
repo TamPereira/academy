@@ -49,7 +49,6 @@ class TurmaController {
 
     // Atualização 
     static async editTurma(req, res) {
-       // const professor_id = req.body.professor_id;
         const id = req.body.id;
         const name = req.body.name;
 
