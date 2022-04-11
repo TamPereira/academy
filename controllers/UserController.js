@@ -76,6 +76,7 @@ class UserController {
             FROM
          academy.users
          LEFT JOIN academy.nota ON users.id = nota.aluno_id
+         WHERE type = 2 AND turma_id = ${req.params.turma_id}
          GROUP BY
          users.id`
          )
