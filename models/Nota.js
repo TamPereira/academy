@@ -18,7 +18,7 @@ const Nota = db.define('Nota', {
 })
 
 // Criar a tabela no DB
- Nota.sync();
+// Nota.sync();
 
 //Primeiro apaga a TB, em seguida cria TB
 //Nota.sync({ force: true })

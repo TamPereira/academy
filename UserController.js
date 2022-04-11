@@ -5,7 +5,6 @@ const Nota = require('../models/Nota');
 const db = require('../db/conn');
 const sequelize = require('sequelize');
 
-
 class UserController {
 
     // Professor
@@ -70,16 +69,17 @@ class UserController {
     static async paginaAluno(req, res) {
 
         let alunos = await db.query(`SELECT
-        SUM( nota.avaliacao) / COUNT( users.id ) as media,
-        IF (SUM( nota.avaliacao ) > 0, IF (SUM( nota.avaliacao ) / COUNT( users.id ) >= 7, 'Aprovado', 'Reprovado' ), '')AS status,
-         users.*
+            SUM( nota.avaliacao ) / COUNT( users.id ) as media,
+            IF (SUM( nota.avaliacao ) > 0, IF (SUM( nota.avaliacao ) / COUNT( users.id ) >= 7, 'Aprovado', 'Reprovado' ), '') AS status,
+                users.* 
             FROM
-         academy.users
-         LEFT JOIN academy.nota ON users.id = nota.aluno_id
-         GROUP BY
-         users.id`
-         )
-         
+                academy.users
+                LEFT JOIN academy.nota ON users.id = nota.aluno_id 
+            GROUP BY
+                users.id`
+                
+                )
+
 
         let turma = await Turma.findByPk(req.params.turma_id)
 
@@ -111,42 +111,39 @@ class UserController {
 
     //Editar User Aluno
     static async paginaEditAluno(req, res) {
-        const aluno = await User.findOne({ 
+        const aluno = await User.findOne({
             where: {
-                id: req.params.id
+                id: req.params.id 
             }
-         })
-
-         const notas = await Nota.findAll({
-             where: {
-                 aluno_id: req.params.id
-             }
-         })
-
-          // calcular média
-        let total = 0,
-        media 
-
-        notas.forEach((nota) => {
-        total += parseInt(nota.dataValues.avaliacao)
         })
 
-        media = total / notas.length
+        const notas = await Nota.findAll({
+            where: {
+                aluno_id: req.params.id
+            }
+        })
 
 
-        res.render('editaluno', { 
+        // Calc Média
+        let total = 0
+
+        notas.forEach((nota) => {
+            total += parseInt(nota.dataValues.avaliacao)
+        })
+
+        let media = total / notas.length
+
+        res.render('editaluno', {
             aluno,
             notas,
             media,
             referer: req.get('referer')
         });
+    }
 
-       
-        
-    };
+    static async calcMedia(notas) {
 
-    
-        
+    }
 
     // Atualização  Aluno
     static async editAluno(req, res) {
@@ -172,7 +169,6 @@ class UserController {
         res.redirect(req.get('referer'));
 
     }
-
 
 }
 
