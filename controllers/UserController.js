@@ -8,12 +8,12 @@ const sequelize = require('sequelize');
 
 class UserController {
 
-    // Professor
+    // Professor do professor
     static async paginaProfessor(req, res) {
         let users = await User.findAll({
             where: {
                 type: 1,
-            
+
             }
         })
         res.render('user', { users })
@@ -27,7 +27,7 @@ class UserController {
         })
     }
 
-    // Adicionar Professor
+    // Adicionar Professor // le os dados do formulario e cria o user // salva no banco
     static async addProfessor(req, res) {
         let user = new User({
             name: req.body.name,
@@ -39,15 +39,16 @@ class UserController {
         res.redirect(req.body.referer)
     }
 
-     //Editar User Professor
-     static async paginaEditUser(req, res) {
+    //Editar User Professor // para visualizar a tela de edit
+    static async paginaEditUser(req, res) {
         const id = req.params.id
         const user = await User.findOne({ where: { id: id } })
 
-        res.render('edituser', { user: user,
+        res.render('edituser', {
+            user: user,
             referer: req.get('referer')
         });
-        
+
     }
 
     // Atualização  User professor
@@ -79,8 +80,8 @@ class UserController {
          WHERE type = 2 AND turma_id = ${req.params.turma_id}
          GROUP BY
          users.id`
-         )
-         
+        )
+
         let turma = await Turma.findByPk(req.params.turma_id)
 
         res.render('aluno', { alunos: alunos[0], turma })
@@ -102,7 +103,7 @@ class UserController {
             name: req.body.name,
             email: req.body.email,
             type: 2,
-            
+
         });
         await aluno.save();
 
@@ -111,39 +112,37 @@ class UserController {
 
     //Editar User Aluno
     static async paginaEditAluno(req, res) {
-        const aluno = await User.findOne({ 
+        const aluno = await User.findOne({
             where: {
                 id: req.params.id
             }
-         })
+        })
 
-         const notas = await Nota.findAll({
-             where: {
-                 aluno_id: req.params.id
-             }
-         })
+        const notas = await Nota.findAll({
+            where: {
+                aluno_id: req.params.id
+            }
+        })
 
-          // calcular média
+        // calcular média
         let total = 0,
-        media 
+            media
         notas.forEach((nota) => {
-        total += parseInt(nota.dataValues.avaliacao)
+            total += parseInt(nota.dataValues.avaliacao)
         })
         media = total / notas.length  // dicidir o total das notas com a quantidade de registros
 
-        res.render('editaluno', { 
+        res.render('editaluno', {
             aluno,
             notas,
             media,
             referer: req.get('referer')
         });
 
-       
-        
+
+
     };
 
-    
-        
 
     // Atualização  Aluno
     static async editAluno(req, res) {

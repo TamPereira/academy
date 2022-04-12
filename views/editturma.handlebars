@@ -1,7 +1,7 @@
 <div class="cadastro-box">
   <h2>Atualizar Turma: {{ turma.dataValues.name }}</h2>
   <form action="/turmas/update" method="POST" class="form">
-  <input type="hidden" name="referer" value="{{ referer }}">
+    <input type="hidden" name="referer" value="{{ referer }}">
     <input type="hidden" name="id" value="{{ turma.dataValues.id }}">
     <div class="user-box">
       <label for="name">Nome: </label>

@@ -27,7 +27,7 @@ const User = db.define('User', {
 })
 
 // Criar a tabela no DB //verificar
-// User.sync();
+ User.sync();
 
 //Primeiro apaga a TB, em seguida cria TB
 //User.sync({ force: true })

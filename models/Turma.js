@@ -18,7 +18,7 @@ const Turma = db.define('Turma', {
 })
 
 // Criar a tabela no DB //verificar
- //Turma.sync();
+ Turma.sync();
 
 //Primeiro apaga a TB, em seguida cria TB
 //Turma.sync({ force: true })

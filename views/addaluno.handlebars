@@ -1,7 +1,7 @@
 <div class="cadastro-box">
   <h1>Adicione Aluno</h1>
   <form action="/turma/{{turma_id}}/aluno/create" method="POST" class="form">
-  <input type="hidden" name="referer" value="{{ referer }}">
+    <input type="hidden" name="referer" value="{{ referer }}">
     <div class="user-box">
       <label for="name">Nome:</label>
       <input type="text" name="name" placeholder="Nome do aluno">
@@ -14,4 +14,4 @@
       <input class="btn btn-outline-primary" type="submit" value="Cadastrar">
     </div>
   </form>
-  </div>
+</div>

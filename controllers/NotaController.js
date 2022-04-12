@@ -5,12 +5,12 @@ class NotaController {
 
     // Notas
     static async paginaNota(req, res) {
-          let notas = await Nota.findAll({ 
+        let notas = await Nota.findAll({
             where: {
-                 aluno_id: req.params.aluno_id,
-             }
-         })
-         let aluno = await User.findByPk(req.params.aluno_id) // coloca o id do aluno
+                aluno_id: req.params.aluno_id,
+            }
+        })
+        let aluno = await User.findByPk(req.params.aluno_id) // coloca o id do aluno
         res.render('nota', { notas, aluno })
     }
 
@@ -21,7 +21,7 @@ class NotaController {
             aluno_id: req.params.aluno_id,
             referer: req.get('referer') // retorna para pagina anterior
         })
-       
+
     }
 
     // Adicionar Notas
@@ -41,14 +41,15 @@ class NotaController {
         const id = req.params.id
         const nota = await Nota.findOne({ where: { id: id } })
 
-        res.render('editnota', { nota,
+        res.render('editnota', {
+            nota,
             referer: req.get('referer')
-         });
+        });
     }
 
     // Atualização 
     static async editNota(req, res) {
-       
+
         const id = req.body.id;
         const avaliacao = req.body.avaliacao;
 

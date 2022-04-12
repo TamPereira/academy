@@ -5,13 +5,13 @@ class TurmaController {
 
     // Turma
     static async paginaTurma(req, res) {
-          let turmas = await Turma.findAll({ 
+        let turmas = await Turma.findAll({
             where: {
-                 professor_id: req.params.professor_id,
-                 
-             }
-         })
-         let professor = await User.findByPk(req.params.professor_id)
+                professor_id: req.params.professor_id,
+
+            }
+        })
+        let professor = await User.findByPk(req.params.professor_id)
         res.render('turma', { turmas, professor })
     }
 
@@ -22,7 +22,7 @@ class TurmaController {
             professor_id: req.params.professor_id,
             referer: req.get('referer')
         })
-       
+
     }
 
     // Adicionar Turma
@@ -42,9 +42,10 @@ class TurmaController {
         const id = req.params.id
         const turma = await Turma.findOne({ where: { id: id } })
 
-        res.render('editturma', { turma,
+        res.render('editturma', {
+            turma,
             referer: req.get('referer')
-         });
+        });
     }
 
     // Atualização 

@@ -1,9 +1,7 @@
-   
-    <a href="/turma/{{turma.dataValues.id}}/alunos" class="btn btn-secondary">
-    Pagina Alunos
-    </a>
-  
-   
+<a href="{{referer}}" class="btn btn-secondary">
+  Pagina Alunos
+</a>
+
 <div class="cadastro-box">
   <h2>Atualizar: {{ aluno.dataValues.name }}</h2>
   <form action="/alunos/update" method="POST" class="form">

@@ -12,7 +12,5 @@ try {
     console.log('A ORM não se conectou:', err)
 }
 
-// Criar a tabela no DB
-//User.sync();
-//.sync({force:true})
+
 module.exports = sequelize;
