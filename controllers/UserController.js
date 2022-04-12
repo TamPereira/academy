@@ -2,7 +2,7 @@ const Turma = require('../models/Turma');
 const User = require('../models/User');
 const Nota = require('../models/Nota');
 
-const db = require('../db/conn');
+const db = require('../db/conn'); // para poder chamra o query // não esta utilizando o model
 const sequelize = require('sequelize');
 
 
@@ -68,7 +68,7 @@ class UserController {
 
     // Aluno
     static async paginaAluno(req, res) {
-
+        //query para poder fazer o status no mysql e redenrizando na pagina
         let alunos = await db.query(`SELECT
         SUM( nota.avaliacao) / COUNT( users.id ) as media,
         IF (SUM( nota.avaliacao ) > 0, IF (SUM( nota.avaliacao ) / COUNT( users.id ) >= 7, 'Aprovado', 'Reprovado' ), '')AS status,
@@ -81,7 +81,6 @@ class UserController {
          users.id`
          )
          
-
         let turma = await Turma.findByPk(req.params.turma_id)
 
         res.render('aluno', { alunos: alunos[0], turma })
@@ -127,13 +126,10 @@ class UserController {
           // calcular média
         let total = 0,
         media 
-
         notas.forEach((nota) => {
         total += parseInt(nota.dataValues.avaliacao)
         })
-
-        media = total / notas.length
-
+        media = total / notas.length  // dicidir o total das notas com a quantidade de registros
 
         res.render('editaluno', { 
             aluno,
